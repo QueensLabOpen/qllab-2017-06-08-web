@@ -13,6 +13,14 @@
     user-select: none;
 
     justify-content: space-between;
+
+    &.fade-enter-active {
+        transition: transform .3s cubic-bezier(.28, .11, .32, 1);
+    }
+
+    &.fade-enter {
+        transform: translateY(-100px);
+    }
 }
 
 .header__item {
@@ -37,4 +45,7 @@
     align-items: center;
 
     color: darken(color($gray, darkest), 6);
+
+    letter-spacing: .3px;
+    text-transform: uppercase;
 }
