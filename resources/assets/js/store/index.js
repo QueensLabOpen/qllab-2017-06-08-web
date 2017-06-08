@@ -13,7 +13,8 @@ export default new Vuex.Store({
         title: config.title,
         intended: config.intended,
         image: null,
-        tags: []
+        tags: [],
+        filename: null
     },
 
     mutations: {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
         },
         SET_IMAGE(state, payload) {
             state.image = payload;
+        },
+        SET_FILENAME(state, filename) {
+            state.filename = filename
         },
         ADD_TAG(state, tag) {
             state.tags.push(tag)
@@ -72,9 +76,19 @@ export default new Vuex.Store({
         LOGOUT({ commit }, token) {
             commit('LOGOUT', token);
         },
-        POST_IMAGE({ commit }, image) {
+        POST_IMAGE({ state }) {
             return new Promise((resolve, reject) => {
-                resolve()
+                axios.post('http://qllab1-api.azurewebsites.net/api/content', {
+                    tags: state.tags,
+                    filename: state.filename,
+                    data: state.image
+                })
+                .then(() => {
+                    resolve()
+                })
+                .catch(error => {
+                    reject(error.response)
+                })
             })
         }
     },
