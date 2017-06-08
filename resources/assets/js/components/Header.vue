@@ -3,8 +3,8 @@
         <div class="header__item">
             <router-link to="/" class="header__logo" exact></router-link>
         </div>
-        <div class="header__item">
-            <a class="item__link--logout h-interaction-clickable" @click.prevent="logout">Logout</a>
+        <div class="header__logout">
+            <a class="h-interaction-clickable" @click.prevent="logout">Logout</a>
         </div>
     </header>
 </template>
