@@ -13,7 +13,9 @@
 <script>
   export default {
       methods: {
-          saveImage(e) {}
+          saveImage(e) {
+
+          }
       }
   }
 </script>
