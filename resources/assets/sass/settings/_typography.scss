@@ -1,0 +1,11 @@
+@mixin font-rubik {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin font-rubik-medium {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
