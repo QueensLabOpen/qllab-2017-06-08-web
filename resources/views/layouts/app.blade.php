@@ -15,6 +15,8 @@
 <head>
     <title>{{ config('app.name') }}</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500">
 </head>
 <body>
     @yield('content')

@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    &:after,
+    &:before {
+        box-sizing: border-box;
+    }
+}
+
+html {
+    @include font-rubik;
+
+    font-size: 14px;
+
+    min-height: 100vh;
+
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+    background: color($blue, default, .12);
+}
+
+:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+
+    user-select: none;
+}
+
+b {
+    font-weight: 600;
+}
+
+input {
+    line-height: 1;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+table {
+    border-spacing: 0;
+}
+
+[v-cloak] {
+    display: none;
+}
