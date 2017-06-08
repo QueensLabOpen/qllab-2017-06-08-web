@@ -5,7 +5,7 @@
             <alert type="error" :visible="form.errors.any()">{{ form.errors.get('username') }}</alert>
             <v-input v-model="form.fields.username" label="Username"></v-input>
             <v-input v-model="form.fields.password" type="password" label="Password"></v-input>
-            <v-button type="warning" native-type="submit" :disabled="disabled">Log In</v-button>
+            <v-button type="success" native-type="submit" :disabled="disabled">Log In</v-button>
         </form>
     </section>
 </template>

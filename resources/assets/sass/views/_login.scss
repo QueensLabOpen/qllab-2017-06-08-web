@@ -1,0 +1,24 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    background-color: color($gray, lightest);
+
+    justify-content: center;
+}
+
+.login__logo {
+    @include icon('../svg/logo.svg');
+
+    width: 100px;
+    height: 66px;
+    margin-bottom: 40px;
+
+    background-size: contain;
+}
+
+.login__form {
+    width: 300px;
+}

@@ -560,7 +560,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         user: null,
         auth: authCheck,
         title: __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].title,
-        intended: __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].intended
+        intended: __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].intended,
+        image: null,
+        tags: []
     },
 
     mutations: {
@@ -582,6 +584,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             state.user = null;
             state.auth = false;
             state.intended = __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].intended;
+        },
+        SET_IMAGE: function SET_IMAGE(state, payload) {
+            state.image = payload;
+        },
+        ADD_TAG: function ADD_TAG(state, tag) {
+            state.tags.push(tag);
+        },
+        REMOVE_TAG: function REMOVE_TAG(state, tag) {
+            state.tags = state.splice(state.tags.indexOf(tag), -1);
         }
     },
 
@@ -619,6 +630,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             var commit = _ref6.commit;
 
             commit('LOGOUT', token);
+        },
+        POST_IMAGE: function POST_IMAGE(_ref7, image) {
+            var commit = _ref7.commit;
+
+            return new Promise(function (resolve, reject) {
+                resolve();
+            });
         }
     },
 
@@ -11609,11 +11627,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
-        saveImage: function saveImage(e) {}
+        saveImage: function saveImage(e) {
+            var that = this;
+
+            // Start reader buffer
+            var reader = new window.FileReader();
+            // Add listener to buffer
+            reader.addEventListener('load', function () {
+                that.$store.commit('SET_IMAGE', reader.result.substr(reader.result.indexOf(',') + 1));
+            }, false
+
+            // Get data from file
+            );reader.readAsDataURL(e.target.files[0]);
+        }
+    },
+    computed: {
+        imageWithIdentifier: function imageWithIdentifier() {
+            return 'data:image/png;base64, ' + this.$store.state.image;
+        }
     }
 });
 
@@ -12684,7 +12718,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('v-button', {
     attrs: {
-      "type": "warning",
+      "type": "success",
       "native-type": "submit",
       "disabled": _vm.disabled
     }
@@ -12761,7 +12795,15 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', [_vm._v("\n    test\n    "), _vm._m(0), _vm._v(" "), _c('input', {
+  return _c('div', [_c('div', [_c('label', {
+    attrs: {
+      "for": "image"
+    }
+  }, [(_vm.$store.state.image) ? _c('img', {
+    attrs: {
+      "src": _vm.imageWithIdentifier
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('input', {
     attrs: {
       "id": "image",
       "type": "file"
@@ -12770,17 +12812,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "change": _vm.saveImage
     }
   })])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "image"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": ""
-    }
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

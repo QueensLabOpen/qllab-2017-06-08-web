@@ -1,0 +1,26 @@
+.alert {
+    font-size: 13px;
+
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 14px;
+
+    border-radius: 3px;
+    opacity: 1;
+
+    text-align: center;
+
+    transition: opacity .2s ease-in-out;
+
+    &.fade-enter,
+    &.fade-leave-to {
+        opacity: 0;
+    }
+}
+
+.alert--error {
+    @extend .alert;
+
+    color: $white;
+    background-color: color($red, light);
+}

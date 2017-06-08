@@ -7,7 +7,13 @@
 
 @import 'base/normalize';
 
+@import 'components/input';
+@import 'components/button';
+@import 'components/alert';
+
 @import 'patterns/header';
 @import 'patterns/main';
 
 @import 'helpers/interaction';
+
+@import 'views/login';

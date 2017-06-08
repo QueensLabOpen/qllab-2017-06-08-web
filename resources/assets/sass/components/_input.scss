@@ -1,0 +1,82 @@
+.input {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+
+    user-select: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.is-focus .input__label {
+        transform: translateY(-8px) scale(.7996);
+    }
+
+    &.-append .input__inner {
+        border-radius: 3px 0 0 3px;
+    }
+}
+
+.input__append {
+    padding: 17px;
+
+    color: color($gray, darkest);
+    background-color: lighten(color($gray, lightest), .15);
+    border: 1px solid color($gray, lighter);
+    border-left: 0;
+    border-radius: 0 3px 3px 0;
+
+    text-align: center;
+    white-space: nowrap;
+
+    user-select: none;
+}
+
+.input__inner {
+    @include font-rubik;
+
+    font-size: 14px;
+
+    width: inherit;
+    height: 52px;
+    padding: 14px 18px 0;
+
+    color: darken(color($gray, darkest), 6);
+    background-color: $white;
+    border: none;
+    border-radius: 3px;
+
+    transform: translateZ(0);
+    transition: border-color .2s ease-in-out;
+
+    appearance: none;
+
+    &:hover,
+    &:focus {
+        border-color: color($gray, light);
+    }
+
+    &[type=password] {
+        font-size: 16px;
+    }
+}
+
+.input__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 17px 0 0 19px;
+
+    color: color($gray, default);
+
+    white-space: nowrap;
+
+    transform: translateY(0) scale(1);
+    transform-origin: 0 0;
+    transition: transform .2s ease-in-out;
+
+    pointer-events: none;
+    user-select: none;
+}
