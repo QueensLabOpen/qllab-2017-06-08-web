@@ -11,7 +11,9 @@ export default new Vuex.Store({
         user: null,
         auth: authCheck,
         title: config.title,
-        intended: config.intended
+        intended: config.intended,
+        image: null,
+        tags: []
     },
 
     mutations: {
@@ -33,6 +35,15 @@ export default new Vuex.Store({
             state.user = null;
             state.auth = false;
             state.intended = config.intended;
+        },
+        SET_IMAGE(state, payload) {
+            state.image = payload;
+        },
+        ADD_TAG(state, tag) {
+            state.tags.push(tag)
+        },
+        REMOVE_TAG(state, tag) {
+            state.tags = state.splice(state.tags.indexOf(tag), -1)
         }
     },
 
@@ -60,6 +71,11 @@ export default new Vuex.Store({
         },
         LOGOUT({ commit }, token) {
             commit('LOGOUT', token);
+        },
+        POST_IMAGE({ commit }, image) {
+            return new Promise((resolve, reject) => {
+                resolve()
+            })
         }
     },
 
