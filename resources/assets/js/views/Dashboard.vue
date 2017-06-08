@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import contentUpload from '../components/ContentUpload.vue'
+import contentUpload from '../components/ContentUpload'
 
 export default {
     created() {
