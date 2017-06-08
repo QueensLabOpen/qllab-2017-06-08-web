@@ -19,11 +19,11 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('snorbuse'),
         ]);
 
-				User::create([
-					'name' => 'Simon',
-					'username' => 'Simon',
-					'email' => 'simon@sunstate.se',
-					'password' => Hash::make('ollonskaft'),
-				]);
+        User::create([
+            'name' => 'Simon',
+            'username' => 'Simon',
+            'email' => 'simon@sunstate.se',
+            'password' => Hash::make('ollonskaft'),
+        ]);
     }
 }
