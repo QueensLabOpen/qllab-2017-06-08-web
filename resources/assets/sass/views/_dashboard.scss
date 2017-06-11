@@ -1,0 +1,27 @@
+.wrap {
+  text-align: center;
+}
+
+input[type=file] {
+  display: none;
+}
+
+input[type=text] {
+  padding: 5px 15px;
+}
+
+.container {
+  width: 700px;
+  margin-top: 15px;
+  display: inline-block;
+
+  .input {
+    border: 1px solid #ccc;
+    display: inline-block;
+  }
+
+  .button {
+    display: inline-block;
+    width: auto;
+  }
+}

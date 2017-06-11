@@ -46,8 +46,10 @@ export default new Vuex.Store({
         ADD_TAG(state, tag) {
             state.tags.push(tag)
         },
-        REMOVE_TAG(state, tag) {
-            state.tags = state.splice(state.tags.indexOf(tag), -1)
+        CLEAN(state) {
+            state.tags = []
+            state.image = null
+            stage.filename = null
         }
     },
 
@@ -83,8 +85,8 @@ export default new Vuex.Store({
                     filename: state.filename,
                     data: state.image
                 })
-                .then(() => {
-                    resolve()
+                .then((response) => {
+                    resolve(response)
                 })
                 .catch(error => {
                     reject(error.response)
