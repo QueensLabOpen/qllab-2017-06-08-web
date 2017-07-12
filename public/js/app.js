@@ -562,7 +562,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         title: __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].title,
         intended: __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].intended,
         image: null,
-        tags: [],
+        tags: null,
         filename: null
     },
 
@@ -592,11 +592,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         SET_FILENAME: function SET_FILENAME(state, filename) {
             state.filename = filename;
         },
-        ADD_TAG: function ADD_TAG(state, tag) {
-            state.tags.push(tag);
+        SET_TAG: function SET_TAG(state, tags) {
+            state.tags = tags;
         },
         CLEAN: function CLEAN(state) {
-            state.tags = [];
+            state.tags = null;
             state.image = null;
             stage.filename = null;
         }
@@ -11753,13 +11753,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sendRequest: function sendRequest() {
             var _this = this;
 
-            var tags = this.tags.split(',');
-
-            tags.forEach(function (x) {
-                if (!_this.$store.state.tags.includes(x)) {
-                    _this.$store.commit('ADD_TAG', x.trim());
-                }
-            });
+            this.$store.commit('SET_TAG', this.tags);
             this.$store.dispatch('POST_IMAGE').then(function (response) {
                 _this.$store.commit('CLEAN');
                 _this.tags = '';

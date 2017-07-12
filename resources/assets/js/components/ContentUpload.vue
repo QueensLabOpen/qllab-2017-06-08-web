@@ -46,13 +46,7 @@
               that.$store.commit('SET_FILENAME', e.target.files[0].name);
           },
           sendRequest() {
-              const tags = this.tags.split(',')
-
-              tags.forEach((x) => {
-                  if (!this.$store.state.tags.includes(x)) {
-                      this.$store.commit('ADD_TAG', x.trim())
-                  }
-              })
+              this.$store.commit('SET_TAG', this.tags)
               this.$store.dispatch('POST_IMAGE')
                   .then((response) => {
                       this.$store.commit('CLEAN')

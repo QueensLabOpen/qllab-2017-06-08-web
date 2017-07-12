@@ -13,7 +13,7 @@ export default new Vuex.Store({
         title: config.title,
         intended: config.intended,
         image: null,
-        tags: [],
+        tags: null,
         filename: null
     },
 
@@ -43,11 +43,11 @@ export default new Vuex.Store({
         SET_FILENAME(state, filename) {
             state.filename = filename
         },
-        ADD_TAG(state, tag) {
-            state.tags.push(tag)
+        SET_TAG(state, tags) {
+            state.tags = tags
         },
         CLEAN(state) {
-            state.tags = []
+            state.tags = null
             state.image = null
             stage.filename = null
         }
